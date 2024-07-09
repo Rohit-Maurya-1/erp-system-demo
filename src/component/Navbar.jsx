@@ -76,7 +76,7 @@ export default function Navbar() {
   };
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+    setMobileMoreAnchorEl();
   };
 
   const handleMenuClose = () => {

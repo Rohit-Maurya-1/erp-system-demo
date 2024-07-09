@@ -23,7 +23,7 @@ function Dashboard() {
           <Sidebar />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={8}>
+              <Grid item xs={12} md={8}>
                 <Stack spacing={2} direction="row">
                   <Card
                     sx={{
@@ -46,7 +46,7 @@ function Dashboard() {
                             end={6372638}
                             duration={4}
                           />
-                          K
+                          
                         </span>
                       </Typography>
                       <Typography gutterBottom variant="body2" component="div">
@@ -90,7 +90,7 @@ function Dashboard() {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={4}>
                 <Stack spacing={2}>
                   <Card sx={{ p: 0.3, backgroundColor: "#5ee1ff7a" }}>
                     <CardContent>

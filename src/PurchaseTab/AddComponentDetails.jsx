@@ -11,7 +11,8 @@ const AddComponentDetails = () => {
           <Col md={3}>
             <div className='row'>
               <div className='card mt-3'>
-                <h2>Vendor Detail</h2>
+                <h5>Vendor Detail</h5>
+                <hr/>
                 <div className='col-12 bgcolor' >
                   <h5>Vendor Detail</h5>
                   <p><strong>Vendor Name:</strong> MOMAGIC TECHNOLOGIES PVT LTD</p>

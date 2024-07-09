@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -18,6 +17,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../appStore";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const drawerWidth = 240;
 
@@ -71,9 +71,15 @@ const Drawer = styled(MuiDrawer, {
 export default function Sidebar() {
   const navigate = useNavigate();
   const theme = useTheme();
-  // const [open, setOpen] = React.useState(false);
   const updateOpen = useAppStore((state) => state.updateOpen);
   const open = useAppStore((state) => state.dopen);
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  React.useEffect(() => {
+    if (isSmallScreen) {
+      updateOpen(false);
+    }
+  }, [isSmallScreen, updateOpen]);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -81,21 +87,13 @@ export default function Sidebar() {
       <Box height={30} />
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+          <IconButton onClick={() => updateOpen(!open)}>
+            {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={() => navigate("/dashboard")}
-          >
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/")}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -112,17 +110,10 @@ export default function Sidebar() {
               >
                 <MailIcon />
               </ListItemIcon>
-              <ListItemText
-                primary="Dashboard"
-                sx={{ opacity: open ? 1 : 0 }}
-              />
+              <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={() => navigate("/SubscribePlan")}
-          >
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/SubscribePlan")}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -139,17 +130,10 @@ export default function Sidebar() {
               >
                 <MenuIcon />
               </ListItemIcon>
-              <ListItemText
-                primary="Subscriber Plan"
-                sx={{ opacity: open ? 1 : 0 }}
-              />
+              <ListItemText primary="Subscriber Plan" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={() => navigate("/about")}
-          >
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/about")}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -169,11 +153,7 @@ export default function Sidebar() {
               <ListItemText primary="About" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={() => navigate("/userManagement")}
-          >
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/userManagement")}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -190,17 +170,10 @@ export default function Sidebar() {
               >
                 <MailIcon />
               </ListItemIcon>
-              <ListItemText
-                primary="User Management"
-                sx={{ opacity: open ? 1 : 0 }}
-              />
+              <ListItemText primary="User Management" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={() => navigate("/orderPerchase")}
-          >
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/orderPerchase")}>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -217,10 +190,7 @@ export default function Sidebar() {
               >
                 <MailIcon />
               </ListItemIcon>
-              <ListItemText
-                primary="Order Perchase "
-                sx={{ opacity: open ? 1 : 0 }}
-              />
+              <ListItemText primary="Order Perchase " sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>

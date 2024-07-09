@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Style from "./Style.module.css";
 
 const labelStyle = {
   display: 'block',
@@ -19,7 +20,7 @@ const borderBottomStyle = {
 const PurchaseOrderForm = () => {
   return (
     <Form className="p-4">
-      <h2 style={labelStyle}>Purchase Order Form</h2>
+      <h4 style={labelStyle}>Purchase Order Form</h4>
 
       {/* PO Type */}
       <Row className="mb-3" style={borderBottomStyle}>
@@ -35,7 +36,7 @@ const PurchaseOrderForm = () => {
       </Row>
 
       {/* Vendor Details */}
-      <h4 style={labelStyle}>Vendor Details</h4>
+      <h5 style={labelStyle}>Vendor Details</h5>
       <Row className="mb-3" >
         <Form.Group as={Col} controlId="vendorType">
           <Form.Label style={labelStyle}>Vendor Type <span style={asteriskStyle}>*</span></Form.Label>
@@ -70,7 +71,7 @@ const PurchaseOrderForm = () => {
       </Form.Group>
 
       {/* PO Terms */}
-      <h4 style={labelStyle}>PO Terms</h4>
+      <h5 style={labelStyle}>PO Terms</h5>
       <Row className="mb-3" >
         <Form.Group as={Col} controlId="termsAndConditions">
           <Form.Label style={labelStyle}>Terms and Conditions<span style={asteriskStyle}>*</span></Form.Label>
@@ -120,7 +121,7 @@ const PurchaseOrderForm = () => {
       </Row>
 
       {/* Billing Details */}
-      <h4 style={labelStyle}>Billing Details</h4>
+      <h5 style={labelStyle}>Billing Details</h5>
       <Row className="mb-3" >
         <Form.Group as={Col} controlId="billingId">
           <Form.Label style={labelStyle}>Billing Id<span style={asteriskStyle}>*</span></Form.Label>
@@ -144,7 +145,7 @@ const PurchaseOrderForm = () => {
       </Row>
 
       {/* Shipping Details */}
-      <h4 style={labelStyle}>Shipping Details</h4>
+      <h5 style={labelStyle}>Shipping Details</h5>
       <Row className="mb-3" >
         <Form.Group as={Col} controlId="shippingId">
           <Form.Label style={labelStyle}>Shipping Id<span style={asteriskStyle}>*</span></Form.Label>
